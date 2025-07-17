@@ -30,24 +30,16 @@
 
     #clock {
       position: fixed;
-      bottom: 20px;
-      right: 20px;
       font-size: 4vw;
       color: white;
       font-family: 'font';
       z-index: 3;
-      animation: fadeBlink 1s ease-in-out infinite;
       background-color: rgba(0,0,0,0.4);
       padding: 0.4em 0.8em;
       border-radius: 32px;
       user-select: none;
       pointer-events: none;
-    }
-
-    @keyframes fadeBlink {
-      0% { opacity: 0.4; }
-      50% { opacity: 1; }
-      100% { opacity: 0.4; }
+      transition: top 1s ease, left 1s ease;
     }
 
     #controls {
@@ -144,8 +136,25 @@
       clock.textContent = `${h}:${m}:${s}`;
     }
 
+    // 時計を画面内でゆっくりランダム移動
+    function moveClockRandomly() {
+      const margin = 20; // 画面端からの余裕(px)
+      const clockRect = clock.getBoundingClientRect();
+      const maxX = window.innerWidth - clockRect.width - margin;
+      const maxY = window.innerHeight - clockRect.height - margin;
+
+      const randomX = Math.floor(Math.random() * maxX) + margin;
+      const randomY = Math.floor(Math.random() * maxY) + margin;
+
+      clock.style.left = `${randomX}px`;
+      clock.style.top = `${randomY}px`;
+    }
+
     setInterval(updateClock, 1000);
     updateClock();
+
+    // 1秒毎に時計の位置を変える（スムーズ移動）
+    setInterval(moveClockRandomly, 1000);
 
     document.addEventListener("fullscreenchange", () => {
       const isFull = !!document.fullscreenElement;
