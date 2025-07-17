@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>画面焼け防止ツール - 使い方</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background-color: #111;
+      color: #eee;
+      margin: 0;
+      padding: 20px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      min-height: 100vh;
+      justify-content: center;
+      text-align: center;
+    }
+    h1 {
+      font-size: 2.5rem;
+      margin-bottom: 1rem;
+    }
+    ol {
+      text-align: left;
+      max-width: 500px;
+      font-size: 1.2rem;
+      line-height: 1.6;
+      margin-bottom: 2rem;
+      padding-left: 1rem;
+    }
+    button {
+      font-size: 1.25rem;
+      padding: 0.75rem 2rem;
+      border: none;
+      border-radius: 8px;
+      background-color: #2a9df4;
+      color: white;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
+    button:hover {
+      background-color: #1a7cd8;
+    }
+    @media (max-width: 600px) {
+      ol {
+        font-size: 1rem;
+        max-width: 90vw;
+      }
+      button {
+        width: 100%;
+      }
+    }
+  </style>
+</head>
+<body>
+  <h1>画面焼け防止ツール - 使い方</h1>
+  <ol>
+    <li>画面焼け防止用の画像を2枚以上用意してください。</li>
+    <li>「画像を選択」ボタンから画像をアップロードします。</li>
+    <li>アップロード後は、画面上部の選択UIが消えます。</li>
+    <li>画面をF11キーで全画面表示にしてください。</li>
+    <li>時計が画面右下に表示され、背景画像が自動で切り替わります。</li>
+    <li>終了する場合は、ESCキーなどで全画面表示を解除してください。</li>
+  </ol>
+  <button id="startBtn">画面焼け防止ページへ進む</button>
+
+  <script>
+    document.getElementById('startBtn').addEventListener('click', () => {
+      // 遷移先URLは実際の焼け防止ページのURLに置換
+      window.location.href = 'burnin_protection.html';
+    });
+  </script>
+</body>
+</html>
